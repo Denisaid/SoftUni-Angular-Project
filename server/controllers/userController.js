@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { body, validationResult } = require('express-validator');
 const { userRegister, userLogin, userLogout, getUserById } = require('../services/userService');
+const { onlyForGuest, isAuth } = require('../middleware/guards');
 
 router.post('/register',
     body(['name', 'email', 'phone', 'address', 'password']).trim(),
@@ -19,6 +20,7 @@ router.post('/register',
     body('password')
         .notEmpty().withMessage('Password is required').bail()
         .isLength({ min: 6 }).withMessage('Password must be at least six characters long'),
+    onlyForGuest,
     async (req, res, next) => {
         try {
             const { errors } = validationResult(req);
@@ -42,6 +44,7 @@ router.post('/login',
     body('password')
         .notEmpty().withMessage('Password is required').bail()
         .isLength({ min: 6 }).withMessage('Password must be at least six characters long'),
+    onlyForGuest,
     async (req, res, next) => {
         try {
             const { errors } = validationResult(req);
@@ -57,7 +60,7 @@ router.post('/login',
         }
     });
 
-router.get('/logout', async (req, res, next) => {
+router.get('/logout', isAuth, async (req, res, next) => {
     try {
         const userToken = req.userToken;
         await userLogout(userToken)
@@ -68,7 +71,7 @@ router.get('/logout', async (req, res, next) => {
     }
 });
 
-router.get('/:userId', async (req, res, next) => {
+router.get('/:userId', isAuth, async (req, res, next) => {
     try {
         const userId = req.params.userId;
         const user = await getUserById(userId);
