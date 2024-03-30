@@ -1,3 +1,4 @@
+const { Order } = require("../models/Order");
 const { Product } = require("../models/Product");
 const { Store } = require("../models/Store");
 
@@ -49,6 +50,24 @@ const getProductById = (productId) => Product.findById(productId).populate('stor
 
 const getAllProducts = (storeId) => Product.find({ storeId: storeId });
 
+const buyFromStore = (storeId, userId, boughtProducts) => {
+    const { orders, addressDelivery, date } = boughtProducts;
+    return Order.create({ storeId, userId, orders, addressDelivery, date })
+};
+
+const getStoreOrders = (storeId) => Order.find({ storeId: storeId }).populate('orders');
+
+const getAllUserOrders = (userId) => Order.find({ userId: userId }).populate('orders storeId');
+
+const getUserOrderById = (orderId) => Order.findById(orderId).populate('orders storeId');
+
+const updateUserOrder = (orderData, orderId) => {
+    const { addressDelivery, orders } = orderData;
+    return Order.findByIdAndUpdate(orderId, { addressDelivery, orders }, { runValidators: true, new: true });
+};
+
+const deleteUserOrder = (orderId) => Order.findByIdAndDelete(orderId, { returnDocument: true });
+
 module.exports = {
     addNewStore,
     updateStore,
@@ -56,6 +75,8 @@ module.exports = {
     getStoreById,
     getAllStores,
     getAllCountStores,
+    getStoreOrders,
+    buyFromStore,
     addNewProduct,
     getProductById,
     updateProduct,
@@ -63,5 +84,8 @@ module.exports = {
     getAllProducts,
     getStoresBySearch,
     getUserStores,
-
+    getAllUserOrders,
+    getUserOrderById,
+    updateUserOrder,
+    deleteUserOrder,
 };
