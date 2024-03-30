@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const { body, validationResult } = require('express-validator');
-const { isAuth, isOwner, isRoleAdmin } = require('../middleware/guards');
+const { isAuth, isOwner, isNotOwner, isRoleAdmin, isAllowedTimeToChangeOrders } = require('../middleware/guards');
 const { preload } = require('../middleware/preload');
+const { getUserById } = require('../services/userService');
 const {
     getAllCountStores,
     getAllStores,
@@ -9,6 +10,8 @@ const {
     updateStore,
     getStoreById,
     deleteStore,
+    getStoreOrders,
+    buyFromStore,
     addNewProduct,
     getProductById,
     updateProduct,
@@ -16,6 +19,10 @@ const {
     getAllProducts,
     getStoresBySearch,
     getUserStores,
+    getAllUserOrders,
+    getUserOrderById,
+    updateUserOrder,
+    deleteUserOrder,
 }
     = require('../services/storeService');
 
@@ -228,6 +235,82 @@ router.delete('/products/delete/:productId', isAuth, preload(getProductById, 'pr
         const deletedProduct = await deleteProduct(productId);
 
         res.status(200).json({ message: 'Product is successfully deleted', deletedProduct });
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.get('/orders/:storeId', isAuth, preload(getStoreById), isOwner, isRoleAdmin, async (req, res, next) => {
+    try {
+
+        const storeId = req.params.storeId;
+        const orders = await getStoreOrders(storeId);
+
+        res.status(200).json(orders);
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.post('/orders/buys/:storeId', isAuth, async (req, res, next) => {
+    try {
+
+        const userId = req.user._id;
+        const storeId = req.params.storeId;
+        const boughtProducts = req.body;
+        
+        await buyFromStore(storeId, userId, boughtProducts);
+
+        res.status(200).json({ message: 'Successful purchase' });
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.get('/orders/user-orders/:userId', isAuth, preload(getUserById, 'userId'), isOwner, async (req, res, next) => {
+    try {
+
+        const userId = req.params.userId;
+        const myOrders = await getAllUserOrders(userId);
+
+        res.status(200).json(myOrders);
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.get('/orders/order/:orderId', isAuth, preload(getUserOrderById, 'orderId'), isOwner, async (req, res, next) => {
+    try {
+
+        const orderId = req.params.orderId;
+        const myOrder = await getUserOrderById(orderId);
+
+        res.status(200).json(myOrder);
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.put('/orders/edit/:orderId', isAuth, preload(getUserOrderById, 'orderId'), isAllowedTimeToChangeOrders, isOwner, async (req, res, next) => {
+    try {
+
+        const orderData = req.body;
+        const orderId = req.params.orderId;
+        const updatedOrder = await updateUserOrder(orderData, orderId);
+
+        res.status(200).json(updatedOrder);
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.delete('/orders/delete/:orderId', isAuth, preload(getUserOrderById, 'orderId'), isAllowedTimeToChangeOrders, isOwner, async (req, res, next) => {
+    try {
+
+        const orderId = req.params.orderId;
+        const deletedOrder = await deleteUserOrder(orderId);
+
+        res.status(200).json({ message: 'Order is successfully deleted', deletedOrder });
     } catch (error) {
         next(error);
     }
