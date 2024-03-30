@@ -9,6 +9,11 @@ const {
     updateStore,
     getStoreById,
     deleteStore,
+    addNewProduct,
+    getProductById,
+    updateProduct,
+    deleteProduct,
+    getAllProducts,
     getStoresBySearch,
     getUserStores,
 }
@@ -128,6 +133,101 @@ router.get('/my-stores/:userId', isAuth, isRoleAdmin, async (req, res, next) => 
         const userStores = await getUserStores(userId);
 
         res.status(200).json(userStores);
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.get('/products/:storeId', async (req, res) => {
+    try {
+
+        const storeId = req.params.storeId;
+        const allProducts = await getAllProducts(storeId);
+
+        res.status(200).json(allProducts);
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.get('/products/product/:productId', isAuth, preload(getProductById, 'productId'), isOwner, isRoleAdmin, async (req, res, next) => {
+    try {
+
+        const productId = req.params.productId;
+        const product = await getProductById(productId); 
+
+        res.status(200).json(product);
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.post('/products/:storeId',
+    body(['name', 'description', 'price', 'material', 'image']).trim(),
+    body('name').isLength({ max: 100 }).withMessage('Product must be a maximum of one hundred characters long'),
+    body('description').isLength({ max: 10 }).withMessage('Product must be a maximum of ten characters long'),
+    body('price').isNumeric({ min: 0 }).withMessage('Price must be a positive number'),
+    body('material').isLength({ max: 20 }).withMessage('Material must be a maximum of twenty characters long'),
+    body('image').matches(/^https?:\/\/[^ ]+$/gi).withMessage('Image URL must start with http:// or https://'),
+    isAuth,
+    preload(getStoreById),
+    isOwner,
+    isRoleAdmin,
+    async (req, res, next) => {
+        try {
+
+            const { errors } = validationResult(req);
+            if (errors.length > 0) {
+                throw errors;
+            }
+
+            const storeId = req.params.storeId;
+            const productData = req.body;
+
+            const newProduct = await addNewProduct(productData, storeId);
+
+            res.status(201).json(newProduct);
+        } catch (error) {
+            next(error);
+        }
+    });
+
+router.put('/products/edit/:productId',
+    body(['name', 'description', 'price', 'material', 'image']).trim(),
+    body('name').isLength({ max: 100 }).withMessage('Product must be a maximum of one hundred characters long'),
+    body('description').isLength({ max: 10 }).withMessage('Product must be a maximum of ten characters long'),
+    body('price').isNumeric({ min: 0 }).withMessage('Price must be a positive number'),
+    body('material').isLength({ max: 20 }).withMessage('Material must be a maximum of twenty characters long'),
+    body('image').matches(/^https?:\/\/[^ ]+$/gi).withMessage('Image URL must start with http:// or https://'),
+    isAuth,
+    preload(getProductById, 'productId'),
+    isOwner,
+    isRoleAdmin,
+    async (req, res, next) => {
+        try {
+
+            const { errors } = validationResult(req);
+            if (errors.length > 0) {
+                throw errors;
+            }
+
+            const productId = req.params.productId;
+            const productData = req.body;
+            const updatedProduct = await updateProduct(productData, productId);
+
+            res.status(200).json(updatedProduct);
+        } catch (error) {
+            next(error);
+        }
+    });
+
+router.delete('/products/delete/:productId', isAuth, preload(getProductById, 'productId'), isOwner, isRoleAdmin, async (req, res, next) => {
+    try {
+
+        const productId = req.params.productId;
+        const deletedProduct = await deleteProduct(productId);
+
+        res.status(200).json({ message: 'Product is successfully deleted', deletedProduct });
     } catch (error) {
         next(error);
     }
