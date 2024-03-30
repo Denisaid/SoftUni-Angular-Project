@@ -1,3 +1,4 @@
+const { Product } = require("../models/Product");
 const { Store } = require("../models/Store");
 
 const addNewStore = (storeData, userId) => {
@@ -32,6 +33,21 @@ const getAllCountStores = () => Store.countDocuments();
 
 const getUserStores = (userId) => Store.find({ owner: userId });
 
+const addNewProduct = async (productData, storeId) => {
+    const { name, description, price, material, image } = productData;
+    return await Product.create({ name, description, price, material, image, storeId: storeId });
+};
+
+const updateProduct = (productData, productId) => {
+    const { name, description, price, material, image } = productData;
+    return Product.findByIdAndUpdate(productId, { name, description, price, material, image }, { runValidators: true, new: true });
+};
+
+const deleteProduct = (productId) => Product.findByIdAndDelete(productId, { returnDocument: true });
+
+const getProductById = (productId) => Product.findById(productId).populate('storeId');
+
+const getAllProducts = (storeId) => Product.find({ storeId: storeId });
 
 module.exports = {
     addNewStore,
@@ -40,6 +56,12 @@ module.exports = {
     getStoreById,
     getAllStores,
     getAllCountStores,
+    addNewProduct,
+    getProductById,
+    updateProduct,
+    deleteProduct,
+    getAllProducts,
     getStoresBySearch,
     getUserStores,
+
 };
