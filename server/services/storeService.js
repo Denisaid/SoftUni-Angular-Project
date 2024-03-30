@@ -1,3 +1,4 @@
+const { Comment } = require("../models/Comment");
 const { Order } = require("../models/Order");
 const { Product } = require("../models/Product");
 const { Store } = require("../models/Store");
@@ -50,6 +51,22 @@ const getProductById = (productId) => Product.findById(productId).populate('stor
 
 const getAllProducts = (storeId) => Product.find({ storeId: storeId });
 
+const addNewComment = (commentData, storeId, userId) => {
+    const { comment } = commentData;
+    return Comment.create({ comment, storeId, userId });
+};
+
+const getCommentById = (commentId) => Comment.findById(commentId).populate('userId', ['name', 'email', 'phone', 'address', 'role']);
+
+const getAllComments = (storeId) => Comment.find({ storeId: storeId }).populate('userId', ['name', 'email', 'phone', 'address', 'role']);
+
+const updateComment = (commentData, commentId) => {
+    const { comment } = commentData;
+    return Comment.findByIdAndUpdate(commentId, { comment }, { runValidators: true, new: true });
+};
+
+const deleteComment = (commentId) => Comment.findByIdAndDelete(commentId, { returnDocument: true });
+
 const buyFromStore = (storeId, userId, boughtProducts) => {
     const { orders, addressDelivery, date } = boughtProducts;
     return Order.create({ storeId, userId, orders, addressDelivery, date })
@@ -82,6 +99,11 @@ module.exports = {
     updateProduct,
     deleteProduct,
     getAllProducts,
+    addNewComment,
+    updateComment,
+    getAllComments,
+    getCommentById,
+    deleteComment,
     getStoresBySearch,
     getUserStores,
     getAllUserOrders,
