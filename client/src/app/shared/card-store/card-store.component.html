@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="content">
+        <div class="imgBx">
+            <img src="{{store.image}}" alt="{{store.name}}">
+        </div>
+        <div class="contentBx">
+            <h3>{{store.name}}</h3>
+            <p>{{store.description}}</p>
+        </div>
+    </div>
+    <ul class="sci">
+        <li>
+            <div class="btn btn-primary btn-lg">
+                <ng-container *ngIf="profile; else default">
+                    <a routerLink="/details/{{store._id}}">Details</a>
+                </ng-container>
+                <ng-template #default>
+                    <a routerLink="/orders/{{store._id}}">Products</a>
+                </ng-template>
+            </div>
+        </li>
+    </ul>
+</div>

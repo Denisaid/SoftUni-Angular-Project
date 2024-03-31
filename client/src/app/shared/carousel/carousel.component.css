@@ -1,0 +1,14 @@
+.carousel-item {
+  width: 1200px;
+  height: 650px;
+}
+
+.carousel-item img {
+  display: block;
+  object-fit: contain;
+  width: 100%;
+}
+
+h5{
+    color:rgb(0, 255, 221) !important;
+}
