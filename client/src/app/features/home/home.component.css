@@ -1,0 +1,20 @@
+.list-group {
+    background: #d92139;
+}
+
+h1 {
+    color: #253f58 !important;
+    font-size: 48px;
+}
+
+.page-item {
+    padding-bottom: 20px;
+}
+
+.page-link{
+    background: #d92139;
+}
+
+.card-list{
+    background-color: #d92139;
+}

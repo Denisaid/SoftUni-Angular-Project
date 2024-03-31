@@ -1,7 +1,7 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, OnDestroy } from '@angular/core';
+
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+
 
 @Component({
     selector: 'app-header',
@@ -14,10 +14,9 @@ export class HeaderComponent implements OnDestroy {
     subscription!: Subscription;
     isUserAdmin!: boolean;
 
-    constructor(
-        @Inject(DOCUMENT) private document: Document,
-        private router: Router
-    ) { }
+    constructor(){
+
+    }
 
     ngOnDestroy(): void {
         if (this.subscription !== undefined) {
