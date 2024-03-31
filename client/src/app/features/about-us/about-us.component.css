@@ -1,0 +1,11 @@
+.row{
+    height: calc(100vh - 315px);
+}
+
+.background{
+    background-color: #d92139;
+}
+
+p{
+    color: #fec748;
+}
