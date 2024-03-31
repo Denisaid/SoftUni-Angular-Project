@@ -1,0 +1,34 @@
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    background-color: #253f58;
+}
+
+.img-logo{
+    width: 90px;
+    height: 90px;
+}
+
+.menu{
+    display: flex;
+    gap: 30px;
+    padding-right: 20px;
+}
+
+ul{
+    margin: 0;
+}
+
+a{
+    color: #fec748;
+}
+
+a:hover{
+    color: #d92139;
+}
+
+.bi{
+    padding-right: 5px;
+}

@@ -1,0 +1,31 @@
+.footer {
+    background-color: #253f58;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.socials ul{
+    display: flex;
+    gap: 40px;
+}
+
+.socials ul li{
+    font-size: 30px;
+}
+
+.socials span {
+    display: none;
+}
+
+a{
+    color: #fec748;
+}
+
+a:hover{
+    color: #d92139;
+}
+
+h4{
+    color: #aec33a;
+}

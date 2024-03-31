@@ -1,0 +1,44 @@
+<header>
+    <nav class="navigation" data-bs-theme="dark">
+        <a routerLink="/" class=""><img class="img-logo" src="/assets/toys-logo.png" alt="logo"></a>
+        <ul class="menu">
+            <li class="">
+                <a class="" routerLinkActive='active' [routerLinkActiveOptions]="{ exact: true }" routerLink="/"
+                    style="font-size: x-large;"><i class="bi bi-house-door"></i>Home</a>
+            </li>
+            <ng-container >
+                <li *ngIf="isUserAdmin" class="">
+                    <a class="" routerLink="/add-stores" routerLinkActive='active' style="font-size: x-large;">
+                        <i class="bi bi-plus-circle-dotted"></i>
+                        Add category
+                    </a>
+                </li>
+                <li class="">
+                    <a class="" routerLink="/profile" routerLinkActive='active' style="font-size: x-large;"><i
+                            class="bi bi-person-circle"></i> My
+                        profile</a>
+                </li>
+                <li class="" >
+                    <a class="" href="javascript:void(0)" routerLinkActive='active' style="font-size: x-large;"><i
+                            class="bi bi-box-arrow-right"></i>
+                        Logout</a>
+                </li>
+            </ng-container>
+            <ng-template #guest>
+                <li class="">
+                    <a class="" routerLink="/about-us" routerLinkActive='active' style="font-size: x-large;"><i
+                            class="bi bi-info-circle"></i>About</a>
+                </li>
+                <li class="">
+                    <a class="" routerLinkActive='active' routerLink="/login" style="font-size: x-large;"><i
+                            class="bi bi-door-open"></i>Login</a>
+                </li>
+                <li class="">
+                    <a class="" routerLink="/register" routerLinkActive='active' style="font-size: x-large;"><i
+                            class="bi bi-person-plus"></i>Register</a>
+                </li>
+            </ng-template>
+        </ul>
+    </nav>
+
+</header>
