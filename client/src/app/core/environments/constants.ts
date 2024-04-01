@@ -9,6 +9,7 @@ export const endpoints = {
     register: 'users/register',
     login: 'users/login',
     logout: 'users/logout',
+    getUserById: (userId: string) => `users/${userId}`, 
     getAllStores: (page: string, limit: string) => `stores?page=${page}&limit=${limit}`,
     getStoresBySearch: (storeName: string) => `stores/search?name=${storeName}`, 
 };
