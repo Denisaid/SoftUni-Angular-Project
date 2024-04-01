@@ -15,4 +15,9 @@ export class UsersService {
         const url = constants.hostBackEnd + endpoints.register;
         return this.http.post<IUserToken>(url, userInput);
     }
+
+    login(userInput: { email: string, password: string }): Observable<IUserToken> {
+        const url = constants.hostBackEnd + endpoints.login;
+        return this.http.post<IUserToken>(url, userInput);
+    }
 }
