@@ -9,3 +9,10 @@ export const endpoints = {
     getAllStores: (page: string, limit: string) => `stores?page=${page}&limit=${limit}`,
     getStoresBySearch: (storeName: string) => `stores/search?name=${storeName}`, 
 };
+
+export const translateErrorsFromServer: Map<string, string> = new Map([
+    ['Email is already used!', 'The email is already taken, please use another'],
+    ['Invalid username or password!', 'Invalid user or password'],
+    ['Invalid email', 'The email entered is invalid'],
+    ['Forbidden - Time is more than five minutes', 'The order cannot be edited. More than 5 minutes have passed. For additional information please call.']
+]);
