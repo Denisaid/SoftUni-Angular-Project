@@ -32,6 +32,16 @@ export class DataService {
         return this.http.get<IStore[]>(url);
     }
 
+    getStoreById(storeId: string): Observable<IStore> {
+        const url = constants.hostBackEnd + endpoints.getStoreById(storeId);
+        return this.http.get<IStore>(url);
+    }
+
+    getAllCommentsStore(storeId: string): Observable<IComment[]> {
+        const url = constants.hostBackEnd + endpoints.getAllCommentsStore(storeId);
+        return this.http.get<IComment[]>(url);
+    }
+
     getUserBought(userId: string): Observable<IOrderWithProducts[]> {
         const url = constants.hostBackEnd + endpoints.getUserBought(userId);
         return this.http.get<IOrderWithProducts[]>(url);

@@ -9,6 +9,7 @@ import { ProfileComponent } from './users/profile-admin/profile.component';
 import { ProfileUserComponent } from './users/profile-user/profile-user.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DetailsStoreComponent } from './stores/details-store/details-store.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SharedModule } from "../shared/shared.module";
 
@@ -20,6 +21,7 @@ import { SharedModule } from "../shared/shared.module";
         AddStoreComponent,
         AboutUsComponent,
         ProfileComponent,
+        DetailsStoreComponent,
         NotFoundComponent,
         ProfileUserComponent,
     ],

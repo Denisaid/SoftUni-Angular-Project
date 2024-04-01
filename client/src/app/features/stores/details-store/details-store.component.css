@@ -1,0 +1,17 @@
+.details{
+    height: calc(100vh - 260px);
+    background: #aec33a;
+}
+
+.card-body{
+    width: 100%;
+}
+
+.card-body img{
+    width: inherit !important;
+    height: inherit !important;
+}
+
+.card{
+    flex:1;
+}

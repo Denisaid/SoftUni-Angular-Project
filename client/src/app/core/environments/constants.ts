@@ -12,8 +12,10 @@ export const endpoints = {
     getUserById: (userId: string) => `users/${userId}`, 
     getAllStores: (page: string, limit: string) => `stores?page=${page}&limit=${limit}`,
     getStoresBySearch: (storeName: string) => `stores/search?name=${storeName}`,
+    getStoreById: (storeId: string) => `stores/${storeId}`,
     addNewStore: 'stores',
     getUserStores: (userId: string) => `stores/my-stores/${userId}`,
+    getAllCommentsStore: (storeId: string) => `stores/comments/${storeId}`,
     getUserBought: (userId: string) => `stores/orders/user-orders/${userId}`, 
 };
 
