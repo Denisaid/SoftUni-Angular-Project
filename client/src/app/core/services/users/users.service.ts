@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IUserToken } from 'src/app/models/user.interfaces';
+import { IUser, IUserToken } from 'src/app/models/user.interfaces';
 import { constants, endpoints } from '../../environments/constants';
 
 @Injectable({
@@ -19,5 +19,15 @@ export class UsersService {
     login(userInput: { email: string, password: string }): Observable<IUserToken> {
         const url = constants.hostBackEnd + endpoints.login;
         return this.http.post<IUserToken>(url, userInput);
+    }
+
+    logout(): Observable<unknown> {
+        const url = constants.hostBackEnd + endpoints.logout;
+        return this.http.get(url);
+    }
+
+    getUserById(userId: string): Observable<IUser> {
+        const url = constants.hostBackEnd + endpoints.getUserById(userId);
+        return this.http.get<IUser>(url);
     }
 }

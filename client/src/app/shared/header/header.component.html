@@ -6,7 +6,7 @@
                 <a class="" routerLinkActive='active' [routerLinkActiveOptions]="{ exact: true }" routerLink="/"
                     style="font-size: x-large;"><i class="bi bi-house-door"></i>Home</a>
             </li>
-            <ng-container >
+            <ng-container *ngIf="updateNav(); else guest">
                 <li *ngIf="isUserAdmin" class="">
                     <a class="" routerLink="/add-stores" routerLinkActive='active' style="font-size: x-large;">
                         <i class="bi bi-plus-circle-dotted"></i>
@@ -18,7 +18,7 @@
                             class="bi bi-person-circle"></i> My
                         profile</a>
                 </li>
-                <li class="">
+                <li class="" (click)="logout()">
                     <a class="" href="javascript:void(0)" routerLinkActive='active' style="font-size: x-large;"><i
                             class="bi bi-box-arrow-right"></i>
                         Logout</a>

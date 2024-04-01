@@ -8,6 +8,7 @@ export const constants = {
 export const endpoints = {
     register: 'users/register',
     login: 'users/login',
+    logout: 'users/logout',
     getAllStores: (page: string, limit: string) => `stores?page=${page}&limit=${limit}`,
     getStoresBySearch: (storeName: string) => `stores/search?name=${storeName}`, 
 };

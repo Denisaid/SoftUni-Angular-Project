@@ -5,8 +5,10 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { LoadingComponent } from './loading/loading.component';
 import { CardStoreComponent } from './card-store/card-store.component';
+import { BublesAnimationComponent } from './bubles-animation/bubles-animation.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { AlertMessageComponent } from './alert-message/alert-message.component';
+import { SuccessMessageComponent } from './success-message/success-message.component';
 
 @NgModule({
   declarations: [
@@ -14,8 +16,10 @@ import { AlertMessageComponent } from './alert-message/alert-message.component';
     FooterComponent,
     LoadingComponent,
     CardStoreComponent,
+    BublesAnimationComponent,
     CarouselComponent,
     AlertMessageComponent,
+    SuccessMessageComponent,
   ],
   imports: [
     CommonModule,
@@ -26,8 +30,10 @@ import { AlertMessageComponent } from './alert-message/alert-message.component';
     FooterComponent,
     LoadingComponent,
     CardStoreComponent,
+    BublesAnimationComponent,
     CarouselComponent,
     AlertMessageComponent,
+    SuccessMessageComponent,
   ]
 })
 export class SharedModule { }
