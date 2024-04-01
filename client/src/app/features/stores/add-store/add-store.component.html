@@ -1,0 +1,75 @@
+<app-loading [isLoading]="isLoading"></app-loading>
+
+<div *ngIf="!isLoading" class="container form">
+    <div class="add-img">
+        <img class="add-store-img position-sticky d-none d-lg-flex flex-grow-1" src="/assets/addToys.jpg"
+            alt="Add store Image">
+    </div>
+    <div class="add-form">
+        <form id="add-store-form" #createFormR="ngForm" (ngSubmit)="createStore(createFormR)">
+            <h2><i class="bi bi-joystick"></i> Add new toy category</h2>
+
+            <app-alert-message [errorMsgFromServer]="errorMsgFromServer"></app-alert-message>
+
+            <div class="form-group form-input">
+                <input type="text" class="form-control" id="name" name="name" ngModel #inName="ngModel" [ngClass]="{'is-valid': inName.valid && inName.dirty, 
+                    'is-invalid': inName.invalid && inName.dirty}" required minlength="2" maxlength="50">
+                <label for="name" class="form-label">Name</label>
+                <div *ngIf="inName.errors?.['required']" class="invalid-feedback fs-6">Field is required</div>
+                <div *ngIf="inName.errors?.['minlength']" class="invalid-feedback fs-6">
+                    Name must be at least 2 characters
+                </div>
+                <div *ngIf="inName.errors?.['maxLength']" class="invalid-feedback fs-6">
+                    Name must be a maximum of 50 characters
+                </div>
+                <div *ngIf="inName.valid" class="valid-feedback fs-6">The field is valid</div>
+            </div>
+            <div class="form-group form-input">
+                <input type="text" class="form-control" id="category" name="category" ngModel #inLocation="ngModel"
+                    [ngClass]="{'is-valid': inLocation.valid && inLocation.dirty, 'is-invalid': inLocation.invalid && inLocation.dirty}"
+                    required minlength="2" maxlength="50">
+                <label for="category" class="form-label">Category</label>
+                <div *ngIf="inLocation.errors?.['required']" class="invalid-feedback fs-6">Field is required</div>
+                <div *ngIf="inLocation.errors?.['minlength']" class="invalid-feedback fs-6">
+                    Category name must be at least 2 characters
+                </div>
+                <div *ngIf="inLocation.errors?.['maxLength']" class="invalid-feedback fs-6">
+                    Category name must be at least 50 characters
+                </div>
+                <div *ngIf="inLocation.valid" class="valid-feedback fs-6">The field is valid</div>
+            </div>
+            <div class="form-group form-input">
+                <input type="text" class="form-control" id="description" name="description" ngModel
+                    #inDescription="ngModel" [ngClass]="{'is-valid': inDescription.valid && inDescription.dirty, 
+                    'is-invalid': inDescription.invalid && inDescription.dirty}" required minlength="5"
+                    maxlength="200">
+                <label for="description" class="form-label">Description</label>
+                <div *ngIf="inDescription.errors?.['required']" class="invalid-feedback fs-6">Field is required
+                </div>
+                <div *ngIf="inDescription.errors?.['minlength']" class="invalid-feedback fs-6">
+                    Description must be at least 5 characters long
+                </div>
+                <div *ngIf="inDescription.errors?.['maxLength']" class="invalid-feedback fs-6">
+                    The description must be a maximum of 200 characters
+                </div>
+                <div *ngIf="inDescription.valid" class="valid-feedback fs-6">The field is valid</div>
+            </div>
+            <div class="form-group form-input">
+                <input id="image" type="text" class="form-control" name="image" ngModel #inImage="ngModel"
+                    [ngClass]="{'is-valid': inImage.valid && inImage.dirty, 'is-invalid': inImage.invalid && inImage.dirty}"
+                    required pattern="^https?:\/\/[^ ]+$">
+                <label for="image" class="form-label">Photo</label>
+                <div *ngIf="inImage.errors?.['required']" class="invalid-feedback fs-6">Field is required</div>
+                <div *ngIf="inImage.errors?.['pattern']" class="invalid-feedback fs-6">
+                    The photo must be a link starting with http:// or https://
+                </div>
+                <div *ngIf="inImage.valid" class="valid-feedback fs-6">The field is valid</div>
+            </div>
+
+            <div class="form-submit mt-4">
+                <input [disabled]="createFormR.invalid" type="submit" value="Add category" class="submit" id="submit"
+                    name="submit" />
+            </div>
+        </form>
+    </div>
+</div>

@@ -20,4 +20,9 @@ export class DataService {
         const url = constants.hostBackEnd + endpoints.getStoresBySearch(storeName);
         return this.http.get<IStore[]>(url);
     }
+
+    createStore(userInput: IStore): Observable<IStore> {
+        const url = constants.hostBackEnd + endpoints.addNewStore;
+        return this.http.post<IStore>(url, userInput);
+    }
 }

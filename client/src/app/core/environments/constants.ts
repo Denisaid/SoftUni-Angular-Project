@@ -11,7 +11,8 @@ export const endpoints = {
     logout: 'users/logout',
     getUserById: (userId: string) => `users/${userId}`, 
     getAllStores: (page: string, limit: string) => `stores?page=${page}&limit=${limit}`,
-    getStoresBySearch: (storeName: string) => `stores/search?name=${storeName}`, 
+    getStoresBySearch: (storeName: string) => `stores/search?name=${storeName}`,
+    addNewStore: 'stores',
 };
 
 export const translateErrorsFromServer: Map<string, string> = new Map([
