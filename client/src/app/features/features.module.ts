@@ -5,6 +5,7 @@ import { RegisterComponent } from './users/register/register.component';
 import { LoginComponent } from './users/login/login.component';
 import { AddStoreComponent } from './stores/add-store/add-store.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { ProfileComponent } from './users/profile-admin/profile.component';
 import { ProfileUserComponent } from './users/profile-user/profile-user.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -18,6 +19,7 @@ import { SharedModule } from "../shared/shared.module";
         LoginComponent,
         AddStoreComponent,
         AboutUsComponent,
+        ProfileComponent,
         NotFoundComponent,
         ProfileUserComponent,
     ],

@@ -27,6 +27,11 @@ export class DataService {
         return this.http.post<IStore>(url, userInput);
     }
 
+    getUserStores(userId: string): Observable<IStore[]> {
+        const url = constants.hostBackEnd + endpoints.getUserStores(userId);
+        return this.http.get<IStore[]>(url);
+    }
+
     getUserBought(userId: string): Observable<IOrderWithProducts[]> {
         const url = constants.hostBackEnd + endpoints.getUserBought(userId);
         return this.http.get<IOrderWithProducts[]>(url);

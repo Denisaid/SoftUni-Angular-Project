@@ -13,6 +13,7 @@ export const endpoints = {
     getAllStores: (page: string, limit: string) => `stores?page=${page}&limit=${limit}`,
     getStoresBySearch: (storeName: string) => `stores/search?name=${storeName}`,
     addNewStore: 'stores',
+    getUserStores: (userId: string) => `stores/my-stores/${userId}`,
     getUserBought: (userId: string) => `stores/orders/user-orders/${userId}`, 
 };
 
