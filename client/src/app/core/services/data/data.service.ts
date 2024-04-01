@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { constants, endpoints } from '../../environments/constants';
 import { IAllStores, IStore } from 'src/app/models/store.interfaces';
+import { IOrderWithProducts } from 'src/app/models/order.interfaces';
 
 @Injectable({
     providedIn: 'root'
@@ -24,5 +25,10 @@ export class DataService {
     createStore(userInput: IStore): Observable<IStore> {
         const url = constants.hostBackEnd + endpoints.addNewStore;
         return this.http.post<IStore>(url, userInput);
+    }
+
+    getUserBought(userId: string): Observable<IOrderWithProducts[]> {
+        const url = constants.hostBackEnd + endpoints.getUserBought(userId);
+        return this.http.get<IOrderWithProducts[]>(url);
     }
 }

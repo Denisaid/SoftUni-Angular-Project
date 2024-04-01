@@ -13,6 +13,7 @@ export const endpoints = {
     getAllStores: (page: string, limit: string) => `stores?page=${page}&limit=${limit}`,
     getStoresBySearch: (storeName: string) => `stores/search?name=${storeName}`,
     addNewStore: 'stores',
+    getUserBought: (userId: string) => `stores/orders/user-orders/${userId}`, 
 };
 
 export const translateErrorsFromServer: Map<string, string> = new Map([
