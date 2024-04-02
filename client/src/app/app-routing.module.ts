@@ -10,6 +10,7 @@ import { DetailsStoreComponent } from './features/stores/details-store/details-s
 import { NotFoundComponent } from './features/not-found/not-found.component';
 import { onlyForGuestGuard } from './core/guards/only-for-guest.guard';
 import { onlyForLoggedInGuard } from './core/guards/only-for-logged-in.guard';
+import { OrderComponent } from './features/orders/order/order.component';
 import { onlyForAdminGuard } from './core/guards/only-for-admin.guard';
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'add-stores', canActivate: [onlyForLoggedInGuard, onlyForAdminGuard], component: AddStoreComponent },
   { path: 'profile', canActivate: [onlyForLoggedInGuard], component: ProfileComponent },
   { path: 'details/:storeId', canActivate: [onlyForLoggedInGuard, onlyForAdminGuard], component: DetailsStoreComponent },
+  { path: 'orders/:storeId', component: OrderComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: '**', component: NotFoundComponent },
 ];
@@ -27,5 +29,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-
 export class AppRoutingModule { }
