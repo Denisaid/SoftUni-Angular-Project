@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditStoreComponent } from './stores/edit-store/edit-store.component';
 import { DetailsStoreComponent } from './stores/details-store/details-store.component';
+import { EditProductComponent } from './products/edit-product/edit-product.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SharedModule } from "../shared/shared.module";
 import { ListProductsComponent } from './products/list-products/list-products.component';
@@ -28,6 +29,7 @@ import { DeleteStoreComponent } from './stores/delete-store/delete-store.compone
         ProfileComponent,
         EditStoreComponent,
         DetailsStoreComponent,
+        EditProductComponent,
         NotFoundComponent,
         ListProductsComponent,
         DeleteStoreComponent,

@@ -18,6 +18,7 @@ export const endpoints = {
     deleteStore: (storeId: string) => `stores/${storeId}`,
     getAllProductsStore: (storeId: string) => `stores/products/${storeId}`,
     addNewProduct: (storeId: string) => `stores/products/${storeId}`,
+    updateProduct: (productId: string) => `stores/products/edit/${productId}`,
     getAllCommentsStore: (storeId: string) => `stores/comments/${storeId}`,
     getUserStores: (userId: string) => `stores/my-stores/${userId}`,
     getUserBought: (userId: string) => `stores/orders/user-orders/${userId}`, 
