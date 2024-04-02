@@ -83,4 +83,9 @@ export class DataService {
         const url = constants.hostBackEnd + endpoints.getUserBought(userId);
         return this.http.get<IOrderWithProducts[]>(url);
     }
+
+    updateOrder(orderId: string, orderData: { addressDelivery: string, orders: string[], date: number }): Observable<{ addressDelivery: string, orders: string[], date: number }> {
+        const url = constants.hostBackEnd + endpoints.updateOrder(orderId);
+        return this.http.put<{ addressDelivery: string, orders: string[], date: number }>(url, orderData);
+    }
 }

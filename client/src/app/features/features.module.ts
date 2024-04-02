@@ -20,6 +20,7 @@ import { DeleteProductComponent } from './products/delete-product/delete-product
 import { DeleteStoreComponent } from './stores/delete-store/delete-store.component';
 import { OrderComponent } from './orders/order/order.component';
 import { PaymentComponent } from './orders/payment/payment.component';
+import { EditOrderComponent } from './orders/edit-order/edit-order.component';
 
 @NgModule({
     declarations: [
@@ -40,6 +41,7 @@ import { PaymentComponent } from './orders/payment/payment.component';
         OrderComponent,
         PaymentComponent,
         ProfileUserComponent,
+        EditOrderComponent,
     ],
     imports: [
         CommonModule,
