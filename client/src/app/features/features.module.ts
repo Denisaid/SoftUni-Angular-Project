@@ -13,6 +13,7 @@ import { EditStoreComponent } from './stores/edit-store/edit-store.component';
 import { DetailsStoreComponent } from './stores/details-store/details-store.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SharedModule } from "../shared/shared.module";
+import { DeleteStoreComponent } from './stores/delete-store/delete-store.component';
 
 @NgModule({
     declarations: [
@@ -25,6 +26,7 @@ import { SharedModule } from "../shared/shared.module";
         EditStoreComponent,
         DetailsStoreComponent,
         NotFoundComponent,
+        DeleteStoreComponent,
         ProfileUserComponent,
     ],
     imports: [

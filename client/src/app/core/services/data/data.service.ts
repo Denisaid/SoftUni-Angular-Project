@@ -32,6 +32,11 @@ export class DataService {
         return this.http.put<IStore>(url, storeData);
     }
 
+    deleteStore(storeId: string): Observable<IStore> {
+        const url = constants.hostBackEnd + endpoints.deleteStore(storeId);
+        return this.http.delete<IStore>(url);
+    }
+
     getUserStores(userId: string): Observable<IStore[]> {
         const url = constants.hostBackEnd + endpoints.getUserStores(userId);
         return this.http.get<IStore[]>(url);
