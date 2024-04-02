@@ -54,6 +54,11 @@ export class DataService {
         return this.http.post<IProduct>(url, productData);
     }
 
+    getAllProductsStore(storeId: string): Observable<IProduct[]> {
+        const url = constants.hostBackEnd + endpoints.getAllProductsStore(storeId);
+        return this.http.get<IProduct[]>(url);
+    }
+
     getAllCommentsStore(storeId: string): Observable<IComment[]> {
         const url = constants.hostBackEnd + endpoints.getAllCommentsStore(storeId);
         return this.http.get<IComment[]>(url);
