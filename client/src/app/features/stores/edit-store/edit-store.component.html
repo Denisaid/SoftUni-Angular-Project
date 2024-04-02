@@ -1,0 +1,78 @@
+<app-loading [isLoading]="isLoading"></app-loading>
+
+<div *ngIf="isLoading === false" class="row">
+    <div class="col-md-5 col-xl-4 col-xxl-5 text-center text-md-start">
+        <h2 class="fw-bold mb-3"><span class="text-white text-decoration-underline">Edit category</span></h2>
+
+        <app-alert-message [errorMsgFromServer]="errorMsgFromServer"></app-alert-message>
+
+        <app-success-message [successMessage]="successMessage" [autoHide]="true"></app-success-message>
+
+        <form #editStore="ngForm" (ngSubmit)="onEditStore(editStore)">
+            <div class="form-group mb-3">
+                <input [ngModel]="storeDetails.name" #inName="ngModel" type="text" class="form-control" name="name"
+                    placeholder="Name"
+                    [ngClass]="{'is-valid': inName.valid && inName.dirty, 'is-invalid': inName.invalid && inName.dirty}"
+                    required minlength="2" maxlength="50">
+                <div *ngIf="inName.errors?.['required']" class="invalid-feedback fs-6">This field is required</div>
+                <div *ngIf="inName.errors?.['minlength']" class="invalid-feedback fs-6">
+                    The name must be at least 2 characters
+                </div>
+                <div *ngIf="inName.errors?.['maxLength']" class="invalid-feedback fs-6">
+                    The name must be a maximum of 50 characters
+                </div>
+                <div *ngIf="inName.valid" class="valid-feedback fs-6">The field is valid</div>
+            </div>
+            <div class="form-group mb-3">
+                <input [ngModel]="storeDetails.category" name="category" type="text" class="form-control"
+                    #inLocation="ngModel" placeholder="Category"
+                    [ngClass]="{'is-valid': inLocation.valid && inLocation.dirty, 'is-invalid': inLocation.invalid && inLocation.dirty}"
+                    required minlength="2" maxlength="50">
+                <div *ngIf="inLocation.errors?.['required']" class="invalid-feedback fs-6">This field is required</div>
+                <div *ngIf="inLocation.errors?.['minlength']" class="invalid-feedback fs-6">
+                    The category must be at least 2 characters
+                </div>
+                <div *ngIf="inLocation.errors?.['maxLength']" class="invalid-feedback fs-6">
+                    The category must be a maximum of 50 characters
+                </div>
+                <div *ngIf="inLocation.valid" class="valid-feedback fs-6">The field is valid</div>
+            </div>
+            <div class="form-group mb-3">
+                <textarea [ngModel]="storeDetails.description" #inDescription="ngModel" type="text" class="form-control"
+                    name="description" placeholder="Short description of the category"
+                    [ngClass]="{'is-valid': inDescription.valid && inDescription.dirty, 'is-invalid': inDescription.invalid && inDescription.dirty}"
+                    required minlength="5" maxlength="200"></textarea>
+                <div *ngIf="inDescription.errors?.['required']" class="invalid-feedback fs-6">This field is required
+                </div>
+                <div *ngIf="inDescription.errors?.['minlength']" class="invalid-feedback fs-6">
+                    The description must be at least 2 characters
+                </div>
+                <div *ngIf="inDescription.errors?.['maxLength']" class="invalid-feedback fs-6">
+                    The description must be a maximum of 200 characters
+                </div>
+                <div *ngIf="inDescription.valid" class="valid-feedback fs-6">The field is valid</div>
+            </div>
+            <div class="form-group mb-3">
+                <input [ngModel]="storeDetails.image" #inImage="ngModel" (ngModelChange)="validateImagePath($event)"
+                    type="text" class="form-control" name="image" placeholder="Photo"
+                    [ngClass]="{'is-valid': inImage.valid && inImage.dirty, 'is-invalid': inImage.invalid && inImage.dirty}"
+                    required pattern="^https?:\/\/[^ ]+$">
+                <div *ngIf="inImage.errors?.['required']" class="invalid-feedback fs-6">This field is required</div>
+                <div *ngIf="inImage.errors?.['pattern']" class="invalid-feedback fs-6">
+                    Image must be a link starting with http:// or https://
+                </div>
+                <div *ngIf="inImage.valid" class="valid-feedback fs-6">The field is valid</div>
+            </div>
+            <div class="form-submit mb-5">
+                <button [disabled]="editStore.invalid"
+                    class="btn btn-primary shadow justify-content-center align-items-center align-content-center"
+                    style="margin-left: 116px;"><i class="bi bi-pencil-square"></i> Edit</button>
+            </div>
+        </form>
+    </div>
+    <div class="col d-none d-lg-flex flex-grow-1 mt-5" style="margin-left: 49px;">
+        <img class="rounded-3" src="{{imageUrl ? imageUrl : storeDetails.image}}" alt="No Image"
+            style="width: 340px;height: 402px;position: relative;padding-bottom: 0px;padding-top: 0px;margin-top: 9px;"
+            width="340" height="402">
+    </div>
+</div>

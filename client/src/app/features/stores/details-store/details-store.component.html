@@ -52,6 +52,16 @@
                                 class="btn btn-outline-primary mt-2 btn-sm text-white" routerLink="/profile"
                                 role="tab"><i class="bi bi-caret-left"></i> Back</a></li>
                     </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane" role="tabpanel" id="tab-3"
+                            style="padding-top: 30px;padding-bottom: 31px;">
+
+                            <app-edit-store [storeDetails]="storeDetails"
+                                (storeUpdated)="refreshStoreDetails()"></app-edit-store>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
