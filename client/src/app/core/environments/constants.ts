@@ -23,6 +23,7 @@ export const endpoints = {
     getAllCommentsStore: (storeId: string) => `stores/comments/${storeId}`,
     getUserStores: (userId: string) => `stores/my-stores/${userId}`,
     getUserBought: (userId: string) => `stores/orders/user-orders/${userId}`, 
+    buyFromStore: (storeId: string) => `stores/orders/buys/${storeId}`,
 };
 
 export const translateErrorsFromServer: Map<string, string> = new Map([

@@ -18,6 +18,8 @@ import { SharedModule } from "../shared/shared.module";
 import { ListProductsComponent } from './products/list-products/list-products.component';
 import { DeleteProductComponent } from './products/delete-product/delete-product.component';
 import { DeleteStoreComponent } from './stores/delete-store/delete-store.component';
+import { OrderComponent } from './orders/order/order.component';
+import { PaymentComponent } from './orders/payment/payment.component';
 
 @NgModule({
     declarations: [
@@ -35,6 +37,8 @@ import { DeleteStoreComponent } from './stores/delete-store/delete-store.compone
         ListProductsComponent,
         DeleteProductComponent,
         DeleteStoreComponent,
+        OrderComponent,
+        PaymentComponent,
         ProfileUserComponent,
     ],
     imports: [

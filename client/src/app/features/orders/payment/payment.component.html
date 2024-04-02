@@ -1,0 +1,99 @@
+<div
+    class="modal-dialog modal-dialog-centered modal-lg d-flex flex-column position-relative mt-4 mb-3 rounded text-white">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title fw-bold text-decoration-underline" id="paymentForm">Your order</h2>
+        </div>
+        <div class="modal-body">
+
+            <app-loading [isLoading]="isLoading"></app-loading>
+
+            <app-alert-message [errorMsgFromServer]="errorMsgFromServer" [autoHide]="true"></app-alert-message>
+
+            <div *ngIf="hasSuccessMessage" class="alert alert-dismissible alert-success">
+                <h3 class="text-decoration-underline">Successful order!</h3>
+                <p class="my-0">Our consultant will contact you.</p>
+                <p class="my-0">Have a nice day!</p>
+                <p class="fst-italic">You can edit or cancel the order within 5 minutes of
+                    <span type="button" data-bs-dismiss="modal" (click)="redirectToProfile()">"Here".</span>
+                </p>
+            </div>
+
+            <ng-container *ngIf="!hasSuccessMessage">
+                <div class="row ">
+                    <div class="col-md-5 col-xl-4 col-xxl-5 text-center text-md-start">
+                        <form #payForm="ngForm" (ngSubmit)="payBill(payForm)">
+                            <h4 class="my-0 py-0">Delivery details</h4>
+                            <hr class="mt-1">
+                            <div class="form-group form-input mb-1">
+                                <label for="name" class="form-label mb-0 text-secondary-emphasis">Name</label>
+                                <input id="name" [ngModel]="currentUser?.userDetails?.name"
+                                    class="form-control text-body-emphasis" type="text" name="name" disabled>
+                            </div>
+                            <div class="form-group form-input mb-1">
+                                <label for="phone" class="form-label mb-0 text-secondary-emphasis">Phone</label>
+                                <input id="phone" [ngModel]="currentUser?.userDetails?.phone"
+                                    class="form-control text-body-emphasis" type="tel" name="phone" disabled>
+                            </div>
+                            <div class="form-group form-input mb-1">
+                                <label for="address" class="form-label mb-0 text-secondary-emphasis">
+                                    Shipping address
+                                </label>
+                                <input id="address" type="text" class="form-control" name="addressDelivery"
+                                    [ngModel]="currentUser?.userDetails?.address" #inAddress="ngModel"
+                                    [ngClass]="{'is-valid': inAddress.valid && inAddress.dirty, 'is-invalid': inAddress.invalid && inAddress.dirty}"
+                                    required minlength="5" maxlength="100">
+                                <div *ngIf="inAddress.errors?.['required']" class="invalid-feedback fs-6">
+                                    Field is required
+                                </div>
+                                <div *ngIf="inAddress.errors?.['minlength']" class="invalid-feedback fs-6">
+                                    The address must be at least 5 characters long
+                                </div>
+                                <div *ngIf="inAddress.errors?.['maxLength']" class="invalid-feedback fs-6">
+                                    The address must be a maximum of 100 characters
+                                </div>
+                                <div *ngIf="inAddress.valid" class="valid-feedback fs-6">The field is valid</div>
+                            </div>
+                            <div class="form-submit my-4">
+                                <button [disabled]="payForm.invalid" class="btn btn-success btn-lg"
+                                    style="margin-left: 116px;">I confirm</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col d-flex" style="margin-left: 49px;">
+                        <div class="summary rounded py-0" style="width: 340px;position: relative;">
+                            <h4 class="my-0 py-0">An order</h4>
+                            <hr class="my-1 mb-4">
+                            <div *ngFor="let order of summaryOrder" class="product my-2">
+                                <div class="product-info">
+                                    <span><strong>{{order.qtyProduct}} x </strong>{{order.product.name}}</span>
+                                </div>
+                                <div class="static-info me-2">
+                                    <div class="total-info">
+                                        <span class="value">{{order.totalPriceProduct | number:'1.2-2'}} €</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="mb-0">
+                            <div class="summary-item fs-5 mt-1">
+                                <div class="row">
+                                    <div class="col text-start mb-3">
+                                        <span class="text">Total:</span>
+                                    </div>
+                                    <div class="col text-end fw-bolder">
+                                        <span>{{totalBillCost | number:'1.2-2'}} €</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+
+            <div class="modal-footer">
+                <button type="button" (click)="onCloseModal()" class="btn btn-secondary" data-bs-dismiss="modal"><i
+                        class="bi bi-x-lg"></i> Close</button>
+            </div>
+        </div>
+    </div>
+</div>

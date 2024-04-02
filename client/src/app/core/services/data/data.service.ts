@@ -74,6 +74,11 @@ export class DataService {
         return this.http.get<IComment[]>(url);
     }
 
+    buyFromStore(storeId: string, purchaseData: { addressDelivery: string, orders: string[], date: number }): Observable<{ addressDelivery: string, orders: string[], date: number }> {
+        const url = constants.hostBackEnd + endpoints.buyFromStore(storeId);
+        return this.http.post<{ addressDelivery: string, orders: string[], date: number }>(url, purchaseData);
+    }
+
     getUserBought(userId: string): Observable<IOrderWithProducts[]> {
         const url = constants.hostBackEnd + endpoints.getUserBought(userId);
         return this.http.get<IOrderWithProducts[]>(url);

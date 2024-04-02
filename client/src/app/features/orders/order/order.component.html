@@ -181,7 +181,19 @@
                                         Order
                                     </button>
                                 </div>
+
+                                <div class="modal fade" id="payment" data-bs-focus="true" data-bs-backdrop="static"
+                                    data-bs-keyboard="true" tabindex="-1" aria-labelledby="paymentForm"
+                                    aria-hidden="true">
+                                    <app-payment [storeDetails]="storeDetails" [allOrderedProducts]="allOrderedProducts"
+                                        [summaryOrder]="summaryOrder" [totalBillCost]="totalBillCost"
+                                        [currentUser]="currentUser"></app-payment>
+                                </div>
                             </ng-template>
+
+                            <hr class="mt-5 mb-0">
+                            <app-add-comments [storeDetails]="storeDetails"
+                                [isRoleAdmin]="isRoleAdmin"></app-add-comments>
                         </div>
 
                     </div>
