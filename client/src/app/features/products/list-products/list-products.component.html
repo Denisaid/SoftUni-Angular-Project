@@ -86,6 +86,13 @@
                                 <app-edit-product [productDetails]="product"></app-edit-product>
 
                             </div>
+                            <div class="modal fade" id="delete_{{product._id}}" data-bs-focus="true"
+                                data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
+                                aria-labelledby="deleteProduct" aria-hidden="true">
+
+                                <app-delete-product [productDetails]="product"></app-delete-product>
+
+                            </div>
                         </div>
                         <nav class="d-flex col justify-content-center align-content-center mt-3">
                             <ul class="pagination pagination-sm justify-content-center">
