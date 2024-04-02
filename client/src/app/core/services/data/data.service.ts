@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { constants, endpoints } from '../../environments/constants';
 import { IAllStores, IStore } from 'src/app/models/store.interfaces';
 import { IOrderWithProducts } from 'src/app/models/order.interfaces';
+import { IComment } from 'src/app/models/comment.interfaces';
+import { IProduct } from 'src/app/models/product.interfaces';
 
 @Injectable({
     providedIn: 'root'
@@ -45,6 +47,11 @@ export class DataService {
     getStoreById(storeId: string): Observable<IStore> {
         const url = constants.hostBackEnd + endpoints.getStoreById(storeId);
         return this.http.get<IStore>(url);
+    }
+
+    createNewProduct(storeId: string, productData: IProduct): Observable<IProduct> {
+        const url = constants.hostBackEnd + endpoints.addNewProduct(storeId);
+        return this.http.post<IProduct>(url, productData);
     }
 
     getAllCommentsStore(storeId: string): Observable<IComment[]> {

@@ -54,11 +54,23 @@
                     </ul>
 
                     <div class="tab-content">
+                        <div class="tab-pane" role="tabpanel" id="tab-2"
+                            style="padding-top: 30px;padding-bottom: 31px;">
+
+                            <app-add-product [storeId]="storeDetails._id"></app-add-product>
+
+                        </div>
                         <div class="tab-pane" role="tabpanel" id="tab-3"
                             style="padding-top: 30px;padding-bottom: 31px;">
 
                             <app-edit-store [storeDetails]="storeDetails"
                                 (storeUpdated)="refreshStoreDetails()"></app-edit-store>
+
+                        </div>
+                        <div class="tab-pane" role="tabpanel" id="tab-4"
+                            style="padding-top: 30px;padding-bottom: 31px;">
+
+                            <app-delete-store [storeDetails]="storeDetails"></app-delete-store>
 
                         </div>
                     </div>

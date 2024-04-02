@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './users/register/register.component';
 import { LoginComponent } from './users/login/login.component';
 import { AddStoreComponent } from './stores/add-store/add-store.component';
+import { AddProductComponent } from './products/add-product/add-product.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ProfileComponent } from './users/profile-admin/profile.component';
 import { ProfileUserComponent } from './users/profile-user/profile-user.component';
@@ -21,6 +22,7 @@ import { DeleteStoreComponent } from './stores/delete-store/delete-store.compone
         RegisterComponent,
         LoginComponent,
         AddStoreComponent,
+        AddProductComponent,
         AboutUsComponent,
         ProfileComponent,
         EditStoreComponent,
