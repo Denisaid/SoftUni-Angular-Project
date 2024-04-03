@@ -25,6 +25,7 @@ export const endpoints = {
     getUserBought: (userId: string) => `stores/orders/user-orders/${userId}`, 
     buyFromStore: (storeId: string) => `stores/orders/buys/${storeId}`,
     updateOrder: (orderId: string) => `stores/orders/edit/${orderId}`,
+    deleteOrder: (orderId: string) => `stores/orders/delete/${orderId}`
 };
 
 export const translateErrorsFromServer: Map<string, string> = new Map([

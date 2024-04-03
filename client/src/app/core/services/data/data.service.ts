@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { constants, endpoints } from '../../environments/constants';
 import { IAllStores, IStore } from 'src/app/models/store.interfaces';
-import { IOrderWithProducts } from 'src/app/models/order.interfaces';
+import { IOrder, IOrderWithProducts } from 'src/app/models/order.interfaces';
 import { IComment } from 'src/app/models/comment.interfaces';
 import { IProduct } from 'src/app/models/product.interfaces';
 
@@ -87,5 +87,10 @@ export class DataService {
     updateOrder(orderId: string, orderData: { addressDelivery: string, orders: string[], date: number }): Observable<{ addressDelivery: string, orders: string[], date: number }> {
         const url = constants.hostBackEnd + endpoints.updateOrder(orderId);
         return this.http.put<{ addressDelivery: string, orders: string[], date: number }>(url, orderData);
+    }
+
+    deleteOrder(orderId: string): Observable<IOrder> {
+        const url = constants.hostBackEnd + endpoints.deleteOrder(orderId);
+        return this.http.delete<IOrder>(url);
     }
 }
