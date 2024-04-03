@@ -46,12 +46,25 @@
                                 class="action-btn me-2" title="Edit">
                                 <i class="bi bi-pencil-square fs-6 text-primary-emphasis"></i>
                             </a>
+                            <a type="button" data-bs-toggle="modal"
+                                [attr.data-bs-target]="'#' + 'delete_' + comment._id" class="action-btn ms-1"
+                                title="Delete">
+                                <i class="bi bi-trash3 fs-6 text-primary-emphasis"></i>
+                            </a>
                         </div>
                         <div class="modal fade" id="edit_{{comment._id}}" data-bs-focus="true" data-bs-backdrop="static"
                             data-bs-keyboard="true" tabindex="-1" aria-labelledby="editComment" aria-hidden="true">
 
                             <app-edit-comment [commentDetails]="comment"
                                 (updateCommentList)="updateComment()"></app-edit-comment>
+
+                        </div>
+                        <div class="modal fade" id="delete_{{comment._id}}" data-bs-focus="true"
+                            data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
+                            aria-labelledby="deleteComment" aria-hidden="true">
+
+                            <app-delete-comment [commentDetails]="comment"
+                                (updateCommentList)="updateComment()"></app-delete-comment>
 
                         </div>
                     </ng-container>

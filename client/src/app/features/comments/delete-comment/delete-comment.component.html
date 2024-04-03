@@ -1,0 +1,27 @@
+<div class="modal-dialog modal-dialog-centered modal-sm d-flex flex-column position-relative rounded" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title fw-bold text-white text-decoration-underline" id="deleteComment">Confirm deletion
+            </h5>
+        </div>
+        <div class="modal-body">
+
+            <app-loading [isLoading]="isLoading"></app-loading>
+
+            <app-alert-message [errorMsgFromServer]="errorMsgFromServer"></app-alert-message>
+
+            <app-success-message [successMessage]="successMessage"></app-success-message>
+
+            <ng-container *ngIf="!successMessage">
+                <h5 class="text-center text-secondary-emphasis">Are you sure you want to delete the comment?</h5>
+            </ng-container>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="deleteComment(commentDetails._id)"
+                    [disabled]="disableBtnDelete"><i class="bi bi-exclamation-triangle"></i> Delete</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onCloseModal()"><i
+                        class="bi bi-x-lg"></i> Close</button>
+            </div>
+        </div>
+    </div>
+</div>

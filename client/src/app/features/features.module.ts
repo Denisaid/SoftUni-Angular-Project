@@ -21,6 +21,7 @@ import { DeleteStoreComponent } from './stores/delete-store/delete-store.compone
 import { OrderComponent } from './orders/order/order.component';
 import { CommentsComponent } from './comments/add-comments/add-comments.component';
 import { EditCommentComponent } from './comments/edit-comment/edit-comment.component';
+import { DeleteCommentComponent } from './comments/delete-comment/delete-comment.component';
 import { PaymentComponent } from './orders/payment/payment.component';
 import { EditOrderComponent } from './orders/edit-order/edit-order.component';
 import { DeleteOrderComponent } from './orders/delete-order/delete-order.component';
@@ -44,6 +45,7 @@ import { DeleteOrderComponent } from './orders/delete-order/delete-order.compone
         OrderComponent,
         CommentsComponent,
         EditCommentComponent,
+        DeleteCommentComponent,
         PaymentComponent,
         ProfileUserComponent,
         EditOrderComponent,

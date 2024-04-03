@@ -89,6 +89,16 @@ export class DataService {
         return this.http.put<IComment>(url, commentData);
     }
 
+    deleteComment(commentId: string): Observable<{ message: string, deletedComment: IComment }> {
+        const url = constants.hostBackEnd + endpoints.deleteComment(commentId);
+        return this.http.delete<{ message: string, deletedComment: IComment }>(url);
+    }
+
+    getCommentById(commentId: string): Observable<IComment> {
+        const url = constants.hostBackEnd + endpoints.getCommentById(commentId);
+        return this.http.get<IComment>(url);
+    }
+
     getAllCommentsStore(storeId: string): Observable<IComment[]> {
         const url = constants.hostBackEnd + endpoints.getAllCommentsStore(storeId);
         return this.http.get<IComment[]>(url);

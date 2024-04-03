@@ -11,7 +11,7 @@ export const endpoints = {
     logout: 'users/logout',
     getUserById: (userId: string) => `users/${userId}`, 
     getAllStores: (page: string, limit: string) => `stores?page=${page}&limit=${limit}`,
-    getStoresBySearch: (storeName: string) => `stores/search?name=${storeName}`,
+    getStoresBySearch: (storeName: string) => `stores/search?name=${storeName}`, 
     getStoreById: (storeId: string) => `stores/${storeId}`,
     addNewStore: 'stores',
     updateStore: (storeId: string) => `stores/${storeId}`,
@@ -20,16 +20,19 @@ export const endpoints = {
     getProductById: (productId: string) => `stores/products/product/${productId}`,
     addNewProduct: (storeId: string) => `stores/products/${storeId}`,
     updateProduct: (productId: string) => `stores/products/edit/${productId}`,
-    deleteProduct: (productId: string) => `stores/products/delete/${productId}`, 
+    deleteProduct: (productId: string) => `stores/products/delete/${productId}`,   
+    getCommentById: (commentId: string) => `stores/comments/comment/${commentId}`,
     getAllCommentsStore: (storeId: string) => `stores/comments/${storeId}`,
     addNewComment: (storeId: string) => `stores/comments/${storeId}`,
     updateComment: (commentId: string) => `stores/comments/edit/${commentId}`,
+    deleteComment: (commentId: string) => `stores/comments/delete/${commentId}`,
     getUserStores: (userId: string) => `stores/my-stores/${userId}`,
-    getStoreOrders: (storeId: string) => `stores/orders/${storeId}`, 
-    getUserBought: (userId: string) => `stores/orders/user-orders/${userId}`, 
+    getOrderById: (orderId: string) => `stores/orders/order/${orderId}`,
+    getStoreOrders: (storeId: string) => `stores/orders/${storeId}`,     
+    getUserBought: (userId: string) => `stores/orders/user-orders/${userId}`,     
     buyFromStore: (storeId: string) => `stores/orders/buys/${storeId}`,
     updateOrder: (orderId: string) => `stores/orders/edit/${orderId}`,
-    deleteOrder: (orderId: string) => `stores/orders/delete/${orderId}`
+    deleteOrder: (orderId: string) => `stores/orders/delete/${orderId}`,
 };
 
 export const translateErrorsFromServer: Map<string, string> = new Map([
