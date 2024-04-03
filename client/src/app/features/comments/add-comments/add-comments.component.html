@@ -1,0 +1,53 @@
+<app-loading [isLoading]="isLoading"></app-loading>
+
+<app-alert-message [errorMsgFromServer]="errorMsgFromServer" [autoHide]="true"></app-alert-message>
+
+<div *ngIf="!isLoading" class="row mt-2">
+    <div class="col-md-12">
+        <ng-container *ngIf="isRoleAdmin">
+            <h3 class="text-center text-decoration-underline mb-3">Comments</h3>
+        </ng-container>
+        <ng-container *ngIf="!isRoleAdmin">
+            <div class="card px-4 mb-3 text-primary-emphasis comments">
+                <h3 class="text-center text-decoration-underline mb-3">Comments</h3>
+                <form #commentForm="ngForm" (ngSubmit)="postComment(commentForm)" class="mb-3">
+                    <div class="form-group form-input">
+                        <textarea ngModel #inComment="ngModel" name="comment" class="form-control"
+                            [ngClass]="{'is-valid': inComment.valid && inComment.dirty, 'is-invalid': inComment.invalid && inComment.dirty}"
+                            placeholder="Add comment" required minlength="5" maxlength="300" cols="30"
+                            rows="1"></textarea>
+                        <div *ngIf="inComment.errors?.['minlength']" class="invalid-feedback fs-6">
+                            Comment must be at least 5 characters
+                        </div>
+                        <div *ngIf="inComment.errors?.['maxlength']" class="invalid-feedback fs-6">
+                            Comments must be a maximum of 300 characters
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" [disabled]="commentForm.invalid"
+                            class="btn btn-primary btn-sm mt-2"><i class="bi bi-chat-right-text"></i> Add</button>
+                    </div>
+                </form>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="allComments.length > 0; else noComment">
+            <div *ngFor="let comment of allComments" class="card mb-3 text-primary-emphasis">
+                <div class="card-body py-1">
+                    <h4 class="mb-0"><i class="bi bi-person"></i> {{comment.userId.name}}</h4>
+                    <div class="comment">
+                        <div class="comment-info">
+                            <span>{{comment.comment}}</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </ng-container>
+        <ng-template #noComment>
+            <div class="card mb-3 text-primary-emphasis py-3">
+                <h5 class="text-center">No comments added</h5>
+            </div>
+        </ng-template>
+    </div>
+</div>

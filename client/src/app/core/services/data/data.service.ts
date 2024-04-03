@@ -44,6 +44,11 @@ export class DataService {
         return this.http.get<IStore[]>(url);
     }
 
+    getStoreOrders(storeId: string): Observable<IOrderWithProducts[]> {
+        const url = constants.hostBackEnd + endpoints.getStoreOrders(storeId);
+        return this.http.get<IOrderWithProducts[]>(url);
+    }
+
     getStoreById(storeId: string): Observable<IStore> {
         const url = constants.hostBackEnd + endpoints.getStoreById(storeId);
         return this.http.get<IStore>(url);
@@ -52,6 +57,11 @@ export class DataService {
     createNewProduct(storeId: string, productData: IProduct): Observable<IProduct> {
         const url = constants.hostBackEnd + endpoints.addNewProduct(storeId);
         return this.http.post<IProduct>(url, productData);
+    }
+
+    getProductById(productId: string): Observable<IProduct> {
+        const url = constants.hostBackEnd + endpoints.getProductById(productId);
+        return this.http.get<IProduct>(url);
     }
 
     getAllProductsStore(storeId: string): Observable<IProduct[]> {
@@ -67,6 +77,11 @@ export class DataService {
     deleteProduct(productId: string): Observable<{ message: string, deletedProduct: IProduct }> {
         const url = constants.hostBackEnd + endpoints.deleteProduct(productId);
         return this.http.delete<{ message: string, deletedProduct: IProduct }>(url);
+    }
+
+    addNewComment(storeId: string, commentData: IComment): Observable<IComment> {
+        const url = constants.hostBackEnd + endpoints.addNewComment(storeId);
+        return this.http.post<IComment>(url, commentData);
     }
 
     getAllCommentsStore(storeId: string): Observable<IComment[]> {

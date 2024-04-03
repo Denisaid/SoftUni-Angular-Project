@@ -19,6 +19,7 @@ import { ListProductsComponent } from './products/list-products/list-products.co
 import { DeleteProductComponent } from './products/delete-product/delete-product.component';
 import { DeleteStoreComponent } from './stores/delete-store/delete-store.component';
 import { OrderComponent } from './orders/order/order.component';
+import { CommentsComponent } from './comments/add-comments/add-comments.component';
 import { PaymentComponent } from './orders/payment/payment.component';
 import { EditOrderComponent } from './orders/edit-order/edit-order.component';
 import { DeleteOrderComponent } from './orders/delete-order/delete-order.component';
@@ -40,6 +41,7 @@ import { DeleteOrderComponent } from './orders/delete-order/delete-order.compone
         DeleteProductComponent,
         DeleteStoreComponent,
         OrderComponent,
+        CommentsComponent,
         PaymentComponent,
         ProfileUserComponent,
         EditOrderComponent,
