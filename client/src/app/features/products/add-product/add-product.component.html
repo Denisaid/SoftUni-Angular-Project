@@ -24,7 +24,7 @@
                 <input ngModel #inWeight="ngModel" class="form-control"
                     [ngClass]="{'is-valid': inWeight.valid && inWeight.dirty, 'is-invalid': inWeight.invalid && inWeight.dirty}"
                     type="text" name="description" placeholder="Good quality product" required minlength="2"
-                    maxlength="10">
+                    maxlength="70">
                 <div *ngIf="inWeight.errors?.['required']" class="invalid-feedback fs-6">This field is required</div>
                 <div *ngIf="inWeight.errors?.['minlength']" class="invalid-feedback fs-6">
                     The description must be a minimum of 2 characters

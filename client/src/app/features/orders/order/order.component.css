@@ -10,6 +10,14 @@
     position: relative;
 }
 
+.text-muted{
+    color: #ffffff !important;
+}
+
+.text-primary-emphasis{
+    color: #ffffff !important;
+}
+
 .store-header-image {
     margin: 0 auto;
     height: 300px;
@@ -118,14 +126,6 @@
 
 .btn{
     background: #d92139;
-}
-
-.text-muted{
-    color: #d92139 !important;
-}
-
-.text-primary-emphasis{
-    color: white !important;
 }
 
 @media (min-width: 768px) {

@@ -1,3 +1,5 @@
+import { IProduct } from "./product.interfaces";
+
 export interface IUser {
     _id: string;
     name: string;

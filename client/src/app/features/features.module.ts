@@ -26,6 +26,7 @@ import { PaymentComponent } from './orders/payment/payment.component';
 import { EditOrderComponent } from './orders/edit-order/edit-order.component';
 import { DeleteOrderComponent } from './orders/delete-order/delete-order.component';
 
+
 @NgModule({
     declarations: [
         HomeComponent,
