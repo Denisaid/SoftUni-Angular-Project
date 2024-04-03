@@ -84,6 +84,11 @@ export class DataService {
         return this.http.post<IComment>(url, commentData);
     }
 
+    updateComment(commentId: string, commentData: IComment): Observable<IComment> {
+        const url = constants.hostBackEnd + endpoints.updateComment(commentId);
+        return this.http.put<IComment>(url, commentData);
+    }
+
     getAllCommentsStore(storeId: string): Observable<IComment[]> {
         const url = constants.hostBackEnd + endpoints.getAllCommentsStore(storeId);
         return this.http.get<IComment[]>(url);

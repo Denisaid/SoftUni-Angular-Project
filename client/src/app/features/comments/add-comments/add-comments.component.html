@@ -40,6 +40,21 @@
                             <span>{{comment.comment}}</span>
                         </div>
                     </div>
+                    <ng-container *ngIf="comment.userId._id === userId">
+                        <div class="actions" style="font-size: 15px;">
+                            <a type="button" data-bs-toggle="modal" [attr.data-bs-target]="'#' + 'edit_' + comment._id"
+                                class="action-btn me-2" title="Edit">
+                                <i class="bi bi-pencil-square fs-6 text-primary-emphasis"></i>
+                            </a>
+                        </div>
+                        <div class="modal fade" id="edit_{{comment._id}}" data-bs-focus="true" data-bs-backdrop="static"
+                            data-bs-keyboard="true" tabindex="-1" aria-labelledby="editComment" aria-hidden="true">
+
+                            <app-edit-comment [commentDetails]="comment"
+                                (updateCommentList)="updateComment()"></app-edit-comment>
+
+                        </div>
+                    </ng-container>
 
                 </div>
             </div>
