@@ -1,5 +1,5 @@
 export const constants = {
-    hostBackEnd: 'http://localhost:3000/',
+    hostBackEnd: 'https://softuni-angular-project-server.onrender.com/',
     userTokenName: '65c227bd8f4eb7fe5ee3cd2ad13a5a8c',
     defaultPaginationPageNum: '1',
     defaultPaginationLimitNum: '3',

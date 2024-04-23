@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 import { LoadingComponent } from './loading/loading.component';
 import { CardStoreComponent } from './card-store/card-store.component';
 import { BublesAnimationComponent } from './bubles-animation/bubles-animation.component';
-import { CarouselComponent } from './carousel/carousel.component';
 import { AlertMessageComponent } from './alert-message/alert-message.component';
 import { SuccessMessageComponent } from './success-message/success-message.component';
 
@@ -17,7 +16,6 @@ import { SuccessMessageComponent } from './success-message/success-message.compo
     LoadingComponent,
     CardStoreComponent,
     BublesAnimationComponent,
-    CarouselComponent,
     AlertMessageComponent,
     SuccessMessageComponent,
   ],
@@ -31,7 +29,6 @@ import { SuccessMessageComponent } from './success-message/success-message.compo
     LoadingComponent,
     CardStoreComponent,
     BublesAnimationComponent,
-    CarouselComponent,
     AlertMessageComponent,
     SuccessMessageComponent,
   ]

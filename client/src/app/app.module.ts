@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { FeaturesModule } from './features/features.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { AddHeaderInterceptor } from './core/interceptors/add-header.interceptor';
+import { CarouselModule } from './carousel/carousel.module';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { AddHeaderInterceptor } from './core/interceptors/add-header.interceptor
         HttpClientModule,
         FormsModule,
         SharedModule,
-        FeaturesModule
+        FeaturesModule,
+        // CarouselModule
     ],
     providers: [
         {

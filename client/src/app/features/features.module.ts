@@ -25,6 +25,7 @@ import { DeleteCommentComponent } from './comments/delete-comment/delete-comment
 import { PaymentComponent } from './orders/payment/payment.component';
 import { EditOrderComponent } from './orders/edit-order/edit-order.component';
 import { DeleteOrderComponent } from './orders/delete-order/delete-order.component';
+import { CarouselModule } from '../carousel/carousel.module';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { DeleteOrderComponent } from './orders/delete-order/delete-order.compone
         RouterModule,
         FormsModule,
         ReactiveFormsModule,
-        SharedModule
+        SharedModule,
+        CarouselModule
     ]
 })
 export class FeaturesModule { }

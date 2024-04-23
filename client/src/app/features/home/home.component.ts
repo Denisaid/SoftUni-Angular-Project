@@ -12,6 +12,24 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
+
+  tittle = 'carousel';
+
+  images=[
+    {
+      imageSrc: 'https://cdn.firstcry.com/education/2022/11/06094158/Toy-Names-For-Kids.jpg',
+      imageAlt: 'nature1',
+    },
+    {
+      imageSrc: 'https://indian-retailer.s3.ap-south-1.amazonaws.com/s3fs-public/2022-07/44289962475_e5c5209506_b.jpg',
+      imageAlt: 'nature2',
+    },
+    {
+      imageSrc: 'https://hips.hearstapps.com/goodhousekeeping-uk/main/embedded/40137/toybox.jpg?crop=1xw:0.5625xh;center,top&resize=1200:*',
+      imageAlt: 'nature3',
+    }
+  ]
+
   isLoading: boolean = false;
   subscription!: Subscription;
   allStores: IStore[] = [];
